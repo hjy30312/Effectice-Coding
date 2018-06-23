@@ -23,12 +23,11 @@
 5. 【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。 
 <br><span style="color:green">正例</span>：MAX_STOCK_COUNT 
 <br><span style="color:red">反例</span>：MAX_COUNT 
-6. 【强制】抽象类命名使用Abstract或Base开头；异常类命名使用Exception结尾；测试类命名以它要测试的类名开始，以Test结尾。 
+6. 【强制】测试类命名以它要测试的类名开始，以Test结尾。 
 7. 【强制】类型与中括号紧挨相连来定义数组。 
  <br><span style="color:green">正例</span>：定义整形数组<code>int[] arrayDemo;</code> 
  <br><span style="color:red">反例</span>：在main参数中，使用<code>String args[]</code>来定义。 
-8. 【强制】POJO类中布尔类型的变量，都不要加is前缀，否则部分框架解析会引起序列化错误。 
- <br><span style="color:red">反例</span>：定义为基本数据类型<code>Boolean isDeleted；</code>的属性，它的方法也是<code>isDeleted()</code>，RPC框架在反向解析的时候，“误以为”对应的属性名称是deleted，导致属性获取不到，进而抛出异常。
+
 9. 【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式。 
  <br><span style="color:green">正例</span>：应用工具类包名为com.alibaba.ai.util、类名为MessageUtils（此规则参考spring的框架结构） 
 10. 【强制】杜绝完全不规范的缩写，避免望文不知义。 
@@ -36,6 +35,7 @@
 11. 【推荐】为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整的单词组合来表达其意。 
 <br><span style="color:green">正例</span>：从远程仓库拉取代码的类命名为PullCodeFromRemoteRepository。 
 <br><span style="color:red">反例</span>：变量int a; 的随意命名方式。 
+<br> 个人注：很常见的问题, 在算法题上可以允许反例，但再大一些的程序里就不要出现反例了,你能保证一个月后再看这个变量还知道他的意义吗 
 12. 【推荐】如果模块、接口、类、方法使用了设计模式，在命名时体现出具体模式。 
 <br><span style="color:orange">说明</span>：将设计模式体现在名字中，有利于阅读者快速理解架构设计理念。 
 <br><span style="color:green">正例</span>：
@@ -239,7 +239,7 @@ if ((file.open(fileName, "w") != null) && (...) || (...)) {
 
 10. 【推荐】表的命名最好是加上“业务名称_表的作用”。 
 <br><span style="color:green">正例</span>：alipay_task / force_project / trade_config 
-个人注：在学校做课设或平时的小项目时  方便管理 如：软件工程_用户表、数据库原理_用户表
+<br>个人注：在学校做课设或平时的小项目时  方便管理 如：软件工程_用户表、数据库原理_用户表<br>
 
 15. 【参考】合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度。 <br><span style="color:green">正例</span>：如下表，其中无符号值可以避免误存负数，且扩大了表示范围。 
 
@@ -264,13 +264,6 @@ if ((file.open(fileName, "w") != null) && (...) || (...)) {
 1） `NULL<>NULL`的返回结果是NULL，而不是`false`。  
 2） `NULL=NULL`的返回结果是NULL，而不是`true`。  
 3） `NULL<>1`的返回结果是NULL，而不是`true`。 
-6. 【强制】 在代码中写分页查询逻辑时，若count为0应直接返回，避免执行后面的分页语句。
-7. 【强制】数据订正（特别是删除、修改记录操作）时，要先select，避免出现误删除，确认无误才能执行更新语句。 
-8. 【参考】如果有全球化需要，所有的字符存储与表示，均以utf-8编码，注意字符统计函数的区别。 
-<br><span style="color:orange">说明</span>：
-<pre>SELECT LENGTH("轻松工作")； 返回为12
-SELECT CHARACTER_LENGTH("轻松工作")； 返回为4</pre>
-如果需要存储表情，那么选择utf8mb4来进行存储，注意它与utf-8编码的区别。 
 
 # 六、工程结构
 ## (一) 应用分层 
