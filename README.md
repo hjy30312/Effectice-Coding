@@ -92,9 +92,7 @@ if (空格a == b空格)
 3. 【强制】if/for/while/switch/do等保留字与括号之间都必须加空格。 
 4. 【强制】任何二目、三目运算符的左右两边都需要加一个空格。 
    <br><span style="color:orange">说明</span>：运算符包括赋值运算符=、逻辑运算符&&、加减乘除符号等。
-5. 【强制】采用4个空格缩进，禁止使用tab字符。 
-   <br><span style="color:orange">说明</span>：
-    如果使用tab缩进，必须设置1个tab为4个空格。IDEA设置tab为4个空格时，请勿勾选`Use tab character`；而在eclipse中，必须勾选`insert spaces for tabs`。 
+
    <br><span style="color:green">正例</span>： （涉及1-5点）
 
           public static void main(String[] args) {
