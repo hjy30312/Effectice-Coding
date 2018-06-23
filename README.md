@@ -51,8 +51,7 @@ public class ResourceObserver;
 14. 接口和实现类的命名有两套规则：  
    1）【强制】对于Service和DAO类，基于SOA的理念，暴露出来的服务一定是接口，内部的实现类用Impl的后缀与接口区别。 
    <br><span style="color:green">正例</span>：CacheServiceImpl实现CacheService接口。<br>
-   2） 【推荐】 如果是形容能力的接口名称，取对应的形容词为接口名（通常是–able的形式）。
-   <br><span style="color:green">正例</span>：AbstractTranslator实现 Translatable。 
+
 16. 【参考】各层命名规约：  
   A) Service/DAO层方法命名规约<br>
    1） 获取单个对象的方法用get作前缀。
