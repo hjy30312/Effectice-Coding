@@ -28,14 +28,14 @@
  <br><span style="color:green">正例</span>：定义整形数组<code>int[] arrayDemo;</code> 
  <br><span style="color:red">反例</span>：在main参数中，使用<code>String args[]</code>来定义。 
 
-9. 【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式。 
+8. 【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式。 
  <br><span style="color:green">正例</span>：应用工具类包名为com.alibaba.ai.util、类名为MessageUtils（此规则参考spring的框架结构） 
  
-11. 【推荐】为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整的单词组合来表达其意。 
+9. 【推荐】为了达到代码自解释的目标，任何自定义编程元素在命名时，使用尽量完整的单词组合来表达其意。 
 <br><span style="color:green">正例</span>：从远程仓库拉取代码的类命名为PullCodeFromRemoteRepository。 
 <br><span style="color:red">反例</span>：变量int a; 的随意命名方式。 
 <br> 个人注：很常见的问题, 在算法题上可以允许反例，但再大一些的程序里就不要出现反例了,你能保证一个月后再看这个变量还知道他的意义吗 
-12. 【推荐】如果模块、接口、类、方法使用了设计模式，在命名时体现出具体模式。 
+10. 【推荐】如果模块、接口、类、方法使用了设计模式，在命名时体现出具体模式。 
 <br><span style="color:orange">说明</span>：将设计模式体现在名字中，有利于阅读者快速理解架构设计理念。 
 <br><span style="color:green">正例</span>：
 ```
@@ -43,15 +43,15 @@ public class OrderFactory;
 public class LoginProxy;
 public class ResourceObserver; 
 ```
-13. 【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的Javadoc注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。 
+11. 【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的Javadoc注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量。 
 <br><span style="color:green">正例</span>：接口方法签名void f(); 接口基础常量String COMPANY = "alibaba"; 
 <br><span style="color:red">反例</span>：接口方法定义public abstract void f(); 
 <br><span style="color:orange">说明</span>：JDK8中接口允许有默认实现，那么这个default方法，是对所有实现类都有价值的默认实现。 
-14. 接口和实现类的命名有两套规则：  
+12. 接口和实现类的命名有两套规则：  
    1）【强制】对于Service和DAO类，基于SOA的理念，暴露出来的服务一定是接口，内部的实现类用Impl的后缀与接口区别。 
    <br><span style="color:green">正例</span>：CacheServiceImpl实现CacheService接口。<br>
 
-16. 【参考】各层命名规约：  
+13. 【参考】各层命名规约：  
   A) Service/DAO层方法命名规约<br>
    1） 获取单个对象的方法用get作前缀。
    <br>2） 获取多个对象的方法用list作前缀。
@@ -115,7 +115,7 @@ if (空格a == b空格)
           }
 
 
-7. 【强制】单行字符数限制不超过120个，超出需要换行，换行时遵循如下原则：
+5. 【强制】单行字符数限制不超过120个，超出需要换行，换行时遵循如下原则：
 <br>1）第二行相对第一行缩进4个空格，从第三行开始，不再继续缩进，参考示例。
 <br>2）运算符与下文一起换行。
 <br>3）方法调用的点符号与下文一起换行。
@@ -140,14 +140,14 @@ sb.append("zi").append("xin")...append
 method(args1, args2, args3, ... 
 , argsX); 
 ```
-8. 【强制】方法参数在定义和传入时，多个参数逗号后边必须加空格。 
+6. 【强制】方法参数在定义和传入时，多个参数逗号后边必须加空格。 
 <br><span style="color:green">正例</span>：下例中实参的"a",后边必须要有一个空格。 
 ```
 method("a", "b", "c"); 
 ```
-9. 【强制】IDE的text file encoding设置为UTF-8; IDE中文件的换行符使用Unix格式，不要使用Windows格式。 
+7. 【强制】IDE的text file encoding设置为UTF-8; IDE中文件的换行符使用Unix格式，不要使用Windows格式。 
 
-11. 【推荐】不同逻辑、不同语义、不同业务的代码之间插入一个空行分隔开来以提升可读性。 
+8. 【推荐】不同逻辑、不同语义、不同业务的代码之间插入一个空行分隔开来以提升可读性。 
 <br><span style="color:orange">说明</span>：没有必要插入**多个空行**进行隔开。 
 
 ## (四) OOP规约 
@@ -157,23 +157,23 @@ method("a", "b", "c");
 <br><span style="color:orange">说明</span>：getObject()与get0bject()的问题。一个是字母的O，一个是数字的0，加@Override可以准确判断是否覆盖成功。另外，如果在抽象类中对方法签名进行修改，其实现类会马上编译报错。 
 
   
-6. 【强制】Object的equals方法容易抛空指针异常，应使用常量或确定有值的对象来调用equals。
+3. 【强制】Object的equals方法容易抛空指针异常，应使用常量或确定有值的对象来调用equals。
 <br><span style="color:green">正例</span>："test".equals(object);
 <br><span style="color:red">反例</span>：object.equals("test"); 
 <br><span style="color:orange">说明</span>：推荐使用java.util.Objects#equals（JDK7引入的工具类）
 个人注：反例是一个十分常见的错误
-7. 【强制】所有的相同类型的包装类对象之间值的比较，全部使用equals方法比较。 
+4. 【强制】所有的相同类型的包装类对象之间值的比较，全部使用equals方法比较。 
 <br><span style="color:orange">说明</span>：对于Integer var = ?  在-128至127范围内的赋值，Integer对象是在IntegerCache.cache产生，会复用已有对象，这个区间内的Integer值可以直接使用==进行判断，但是这个区间之外的所有数据，都会在堆上产生，并不会复用已有对象，这是一个大坑，推荐使用equals方法进行判断。 
  
-9. 【强制】定义DO/DTO/VO等POJO类时，不要设定任何属性**默认值**。
+5. 【强制】定义DO/DTO/VO等POJO类时，不要设定任何属性**默认值**。
 <br><span style="color:red">反例</span>：POJO类的gmtCreate默认值为new Date();但是这个属性在数据提取时并没有置入具体值，在更新其它字段时又附带更新了此字段，导致创建时间被修改成当前时间。  
-11. 【强制】构造方法里面禁止加入任何业务逻辑，如果有初始化逻辑，请放在init方法中。 
-12. 【强制】POJO类必须写toString方法。使用IDE中的工具：source> generate toString时，如果继承了另一个POJO类，注意在前面加一下super.toString。 <br><span style="color:orange">说明</span>：在方法执行抛出异常时，可以直接调用POJO的toString()方法打印其属性值，便于排查问题。 
+6. 【强制】构造方法里面禁止加入任何业务逻辑，如果有初始化逻辑，请放在init方法中。 
+7. 【强制】POJO类必须写toString方法。使用IDE中的工具：source> generate toString时，如果继承了另一个POJO类，注意在前面加一下super.toString。 <br><span style="color:orange">说明</span>：在方法执行抛出异常时，可以直接调用POJO的toString()方法打印其属性值，便于排查问题。 
 
-14. 【推荐】当一个类有多个构造方法，或者多个同名方法，这些方法应该按顺序放置在一起，便于阅读，此条规则优先于第15条规则。 
-15. 【推荐】 类内方法定义的顺序依次是：公有方法或保护方法 > 私有方法 > getter/setter方法。
+8. 【推荐】当一个类有多个构造方法，或者多个同名方法，这些方法应该按顺序放置在一起，便于阅读，此条规则优先于第15条规则。 
+9. 【推荐】 类内方法定义的顺序依次是：公有方法或保护方法 > 私有方法 > getter/setter方法。
 <br><span style="color:orange">说明</span>：公有方法是类的调用者和维护者最关心的方法，首屏展示最好；保护方法虽然只是子类关心，也可能是“模板设计模式”下的核心方法；而私有方法外部一般不需要特别关心，是一个黑盒实现；因为承载的信息价值较低，所有Service和DAO的getter/setter方法放在类体最后。 
-16. 【推荐】setter方法中，参数名称与类成员变量名称一致，this.成员名 = 参数名。在getter/setter方法中，不要增加业务逻辑，增加排查问题的难度。
+10. 【推荐】setter方法中，参数名称与类成员变量名称一致，this.成员名 = 参数名。在getter/setter方法中，不要增加业务逻辑，增加排查问题的难度。
 <br><span style="color:red">反例</span>：
 ```
   public Integer getData() {      
@@ -184,7 +184,7 @@ method("a", "b", "c");
       }  
   }
 ```
-17. 【推荐】循环体内，字符串的连接方式，使用StringBuilder的append方法进行扩展。
+11. 【推荐】循环体内，字符串的连接方式，使用StringBuilder的append方法进行扩展。
 <br><span style="color:orange">说明</span>：反编译出的字节码文件显示每次循环都会new出一个StringBuilder对象，然后进行append操作，最后通过toString方法返回String对象，造成内存资源浪费。  <br><span style="color:red">反例</span>：
 ```
   String str = "start";
@@ -229,15 +229,14 @@ if ((file.open(fileName, "w") != null) && (...) || (...)) {
 3. 【强制】表名不使用复数名词。 
 <br><span style="color:orange">说明</span>：表名应该仅仅表示表里面的实体内容，不应该表示实体数量，对应于DO类名也是单数形式，符合表达习惯。 
 4. 【强制】禁用保留字，如`desc`、`range`、`match`、`delayed`等，请参考MySQL官方保留字。 
-6. 【强制】小数类型为decimal，禁止使用float和double。 
-<br><span style="color:orange">说明</span>：float和double在存储的时候，存在精度损失的问题，很可能在值的比较时，得到不正确的结果。如果存储的数据范围超过decimal的范围，建议将数据拆成整数和小数分开存储。 
-7. 【强制】如果存储的字符串长度几乎相等，使用char定长字符串类型。 
 
-10. 【推荐】表的命名最好是加上“业务名称_表的作用”。 
+5. 【强制】如果存储的字符串长度几乎相等，使用char定长字符串类型。 
+
+6. 【推荐】表的命名最好是加上“业务名称_表的作用”。 
 <br><span style="color:green">正例</span>：alipay_task / force_project / trade_config 
 <br>个人注：在学校做课设或平时的小项目时  方便管理 如：软件工程_用户表、数据库原理_用户表<br>
 
-15. 【参考】合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度。 <br><span style="color:green">正例</span>：如下表，其中无符号值可以避免误存负数，且扩大了表示范围。 
+7. 【参考】合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度。 <br><span style="color:green">正例</span>：如下表，其中无符号值可以避免误存负数，且扩大了表示范围。 
 
 | 对象  | 年龄区间 | 类型  | 字节  |
 | ------------- |:-------------| :----- |:----- |
