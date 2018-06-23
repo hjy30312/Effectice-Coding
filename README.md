@@ -75,7 +75,7 @@ public class ResourceObserver;
 String key = "Id#taobao_" + tradeId;       
 cache.put(key, value); 
 ```
-个人注：使用常量类管理
+<br>个人注：使用常量类管理<br>
 2. 【强制】long或者Long初始赋值时，使用大写的L，不能是小写的l，小写容易跟数字1混淆，造成误解。 
 <br><span style="color:orange">说明</span>：<pre>Long a = 2l;</pre> 写的是数字的`21`，还是Long型的`2`? 
 
