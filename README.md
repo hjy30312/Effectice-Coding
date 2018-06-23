@@ -252,7 +252,7 @@ if ((file.open(fileName, "w") != null) && (...) || (...)) {
 ## (三) SQL语句 
 1. 【强制】在表查询中，一律不要使用 * 作为查询的字段列表，需要哪些字段必须明确写明。 
 <br><span style="color:orange">说明</span>：1）增加查询分析器解析成本。2）增减字段容易与resultMap配置不一致。
-个人注: 想要什么查什么,平时使用select都是 * ,这是一个很常见的习惯问题。
+<br>个人注: 想要什么查什么,平时使用select都是 * ,这是一个很常见的习惯问题。
 2. 【强制】不要使用count(列名)或count(常量)来替代count(*)，count(*)是SQL92定义的标准统计行数的语法，跟数据库无关，跟NULL和非NULL无关。 
 <br><span style="color:orange">说明</span>：count(*)会统计值为NULL的行，而count(列名)不会统计此列为NULL值的行。 
 3. 【强制】count(distinct col) 计算该列除NULL之外的不重复行数，注意 count(distinct col1, col2) 如果其中一列全为NULL，那么即使另一列有不同的值，也返回为0。 
