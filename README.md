@@ -69,12 +69,13 @@ public class ResourceObserver;
 
 ## （二）常量定义
 
-1. 【强制】不允许任何魔法值（即未经预先定义的常量）直接出现在代码中(使用常量类管理)。
+1. 【强制】不允许任何魔法值（即未经预先定义的常量）直接出现在代码中。
 <br><span style="color:red">反例</span>：
 ```
 String key = "Id#taobao_" + tradeId;       
 cache.put(key, value); 
 ```
+个人注：使用常量类管理
 2. 【强制】long或者Long初始赋值时，使用大写的L，不能是小写的l，小写容易跟数字1混淆，造成误解。 
 <br><span style="color:orange">说明</span>：<pre>Long a = 2l;</pre> 写的是数字的`21`，还是Long型的`2`? 
 
@@ -201,12 +202,6 @@ method("a", "b", "c");
       str = str + "hello";      
   }
 ```
-18. 【推荐】final可以声明类、成员变量、方法、以及本地变量，下列情况使用final关键字：
-<br>1） 不允许被继承的类，如：String类。
-<br>2） 不允许修改引用的域对象，如：POJO类的域变量。
-<br>3） 不允许被重写的方法，如：POJO类的setter方法。
-<br>4） 不允许运行过程中重新赋值的局部变量。
-<br>5） 避免上下文重复使用一个变量，使用final描述可以强制重新定义一个变量，方便更好地进行重构。 
 
 
 ## (七) 控制语句 
@@ -246,19 +241,13 @@ if ((file.open(fileName, "w") != null) && (...) || (...)) {
 3. 【强制】表名不使用复数名词。 
 <br><span style="color:orange">说明</span>：表名应该仅仅表示表里面的实体内容，不应该表示实体数量，对应于DO类名也是单数形式，符合表达习惯。 
 4. 【强制】禁用保留字，如`desc`、`range`、`match`、`delayed`等，请参考MySQL官方保留字。 
-5. 【强制】主键索引名为pk_字段名；唯一索引名为uk_字段名；普通索引名则为idx_字段名。 
-<br><span style="color:orange">说明</span>：pk_ 即primary key；uk_ 即 unique key；idx_ 即index的简称。 
 6. 【强制】小数类型为decimal，禁止使用float和double。 
 <br><span style="color:orange">说明</span>：float和double在存储的时候，存在精度损失的问题，很可能在值的比较时，得到不正确的结果。如果存储的数据范围超过decimal的范围，建议将数据拆成整数和小数分开存储。 
 7. 【强制】如果存储的字符串长度几乎相等，使用char定长字符串类型。 
-8. 【强制】varchar是可变长字符串，不预先分配存储空间，长度不要超过5000，如果存储长度大于此值，定义字段类型为text，独立出来一张表，用主键来对应，避免影响其它字段索引效率。 
+
 10. 【推荐】表的命名最好是加上“业务名称_表的作用”。 
 <br><span style="color:green">正例</span>：alipay_task / force_project / trade_config 
 
-13. 【推荐】字段允许适当冗余，以提高查询性能，但必须考虑数据一致。冗余字段应遵循：  
-1）不是频繁修改的字段。  
-2）不是varchar超长字段，更不能是text字段。
- <br><span style="color:green">正例</span>：商品类目名称使用频率高，字段长度短，名称基本一成不变，可在相关联的表中冗余存储类目名称，避免关联查询。 
 15. 【参考】合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度。 <br><span style="color:green">正例</span>：如下表，其中无符号值可以避免误存负数，且扩大了表示范围。 
 
 | 对象  | 年龄区间 | 类型  | 字节  |
