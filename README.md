@@ -160,13 +160,12 @@ method("a", "b", "c");
 2. 【强制】所有的覆写方法，必须加@Override注解。 
 <br><span style="color:orange">说明</span>：getObject()与get0bject()的问题。一个是字母的O，一个是数字的0，加@Override可以准确判断是否覆盖成功。另外，如果在抽象类中对方法签名进行修改，其实现类会马上编译报错。 
 
- 
-5. 【强制】不能使用过时的类或方法。 
-<br><span style="color:orange">说明</span>：java.net.URLDecoder 中的方法decode(String encodeStr) 这个方法已经过时，应该使用双参数decode(String source, String encode)。接口提供方既然明确是过时接口，那么有义务同时提供新的接口；作为调用方来说，有义务去考证过时方法的新实现是什么。 
+  
 6. 【强制】Object的equals方法容易抛空指针异常，应使用常量或确定有值的对象来调用equals。
 <br><span style="color:green">正例</span>："test".equals(object);
 <br><span style="color:red">反例</span>：object.equals("test"); 
 <br><span style="color:orange">说明</span>：推荐使用java.util.Objects#equals（JDK7引入的工具类）
+个人注：反例是一个十分常见的错误
 7. 【强制】所有的相同类型的包装类对象之间值的比较，全部使用equals方法比较。 
 <br><span style="color:orange">说明</span>：对于Integer var = ?  在-128至127范围内的赋值，Integer对象是在IntegerCache.cache产生，会复用已有对象，这个区间内的Integer值可以直接使用==进行判断，但是这个区间之外的所有数据，都会在堆上产生，并不会复用已有对象，这是一个大坑，推荐使用equals方法进行判断。 
  
@@ -240,6 +239,7 @@ if ((file.open(fileName, "w") != null) && (...) || (...)) {
 
 10. 【推荐】表的命名最好是加上“业务名称_表的作用”。 
 <br><span style="color:green">正例</span>：alipay_task / force_project / trade_config 
+个人注：在学校做课设或平时的小项目时  方便管理 如：软件工程_用户表、数据库原理_用户表
 
 15. 【参考】合适的字符存储长度，不但节约数据库表空间、节约索引存储，更重要的是提升检索速度。 <br><span style="color:green">正例</span>：如下表，其中无符号值可以避免误存负数，且扩大了表示范围。 
 
@@ -251,19 +251,22 @@ if ((file.open(fileName, "w") != null) && (...) || (...)) {
 | 太阳 |约50亿年 | unsigned bigint |8|
 
 ## (三) SQL语句 
-1. 【强制】不要使用count(列名)或count(常量)来替代count(*)，count(*)是SQL92定义的标准统计行数的语法，跟数据库无关，跟NULL和非NULL无关。 
+1. 【强制】在表查询中，一律不要使用 * 作为查询的字段列表，需要哪些字段必须明确写明。 
+<br><span style="color:orange">说明</span>：1）增加查询分析器解析成本。2）增减字段容易与resultMap配置不一致。
+个人注: 想要什么查什么,平时使用select都是 * ,这是一个很常见的习惯问题。
+2. 【强制】不要使用count(列名)或count(常量)来替代count(*)，count(*)是SQL92定义的标准统计行数的语法，跟数据库无关，跟NULL和非NULL无关。 
 <br><span style="color:orange">说明</span>：count(*)会统计值为NULL的行，而count(列名)不会统计此列为NULL值的行。 
-2. 【强制】count(distinct col) 计算该列除NULL之外的不重复行数，注意 count(distinct col1, col2) 如果其中一列全为NULL，那么即使另一列有不同的值，也返回为0。 
-3. 【强制】当某一列的值全是NULL时，count(col)的返回结果为0，但sum(col)的返回结果为NULL，因此使用sum()时需注意NPE问题。 
+3. 【强制】count(distinct col) 计算该列除NULL之外的不重复行数，注意 count(distinct col1, col2) 如果其中一列全为NULL，那么即使另一列有不同的值，也返回为0。 
+4. 【强制】当某一列的值全是NULL时，count(col)的返回结果为0，但sum(col)的返回结果为NULL，因此使用sum()时需注意NPE问题。 
 <br><span style="color:green">正例</span>：可以使用如下方式来避免sum的NPE问题：
 <pre>SELECT IF(ISNULL(SUM(g)),0,SUM(g)) FROM table; </pre>
-4. 【强制】使用`ISNULL()`来判断是否为NULL值。 说明：NULL与任何值的直接比较都为NULL。  
+5. 【强制】使用`ISNULL()`来判断是否为NULL值。 说明：NULL与任何值的直接比较都为NULL。  
 1） `NULL<>NULL`的返回结果是NULL，而不是`false`。  
 2） `NULL=NULL`的返回结果是NULL，而不是`true`。  
 3） `NULL<>1`的返回结果是NULL，而不是`true`。 
-5. 【强制】 在代码中写分页查询逻辑时，若count为0应直接返回，避免执行后面的分页语句。
-8. 【强制】数据订正（特别是删除、修改记录操作）时，要先select，避免出现误删除，确认无误才能执行更新语句。 
-10. 【参考】如果有全球化需要，所有的字符存储与表示，均以utf-8编码，注意字符统计函数的区别。 
+6. 【强制】 在代码中写分页查询逻辑时，若count为0应直接返回，避免执行后面的分页语句。
+7. 【强制】数据订正（特别是删除、修改记录操作）时，要先select，避免出现误删除，确认无误才能执行更新语句。 
+8. 【参考】如果有全球化需要，所有的字符存储与表示，均以utf-8编码，注意字符统计函数的区别。 
 <br><span style="color:orange">说明</span>：
 <pre>SELECT LENGTH("轻松工作")； 返回为12
 SELECT CHARACTER_LENGTH("轻松工作")； 返回为4</pre>
