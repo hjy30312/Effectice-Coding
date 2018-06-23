@@ -24,7 +24,6 @@
 5. 【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长。 
 <br><span style="color:green">正例</span>：MAX_STOCK_COUNT 
 <br><span style="color:red">反例</span>：MAX_COUNT 
-6. 【强制】测试类命名以它要测试的类名开始，以Test结尾。 
 7. 【强制】类型与中括号紧挨相连来定义数组。 
  <br><span style="color:green">正例</span>：定义整形数组<code>int[] arrayDemo;</code> 
  <br><span style="color:red">反例</span>：在main参数中，使用<code>String args[]</code>来定义。 
