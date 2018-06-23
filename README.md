@@ -75,7 +75,7 @@ public class ResourceObserver;
 String key = "Id#taobao_" + tradeId;       
 cache.put(key, value); 
 ```
-<br>个人注：使用常量类管理<br>
+个人注：使用常量类管理<br>
 2. 【强制】long或者Long初始赋值时，使用大写的L，不能是小写的l，小写容易跟数字1混淆，造成误解。 
 <br><span style="color:orange">说明</span>：<pre>Long a = 2l;</pre> 写的是数字的`21`，还是Long型的`2`? 
 
@@ -118,12 +118,7 @@ if (空格a == b空格)
               }
           }
 
-6. 【强制】注释的双斜线与注释内容之间有且仅有一个空格。 
- <br><span style="color:green">正例</span>：
-```
-// 这是示例注释，请注意在双斜线之后有一个空格  
-String ygb = new String(); 
-```
+
 7. 【强制】单行字符数限制不超过120个，超出需要换行，换行时遵循如下原则：
 <br>1）第二行相对第一行缩进4个空格，从第三行开始，不再继续缩进，参考示例。
 <br>2）运算符与下文一起换行。
@@ -208,9 +203,7 @@ method("a", "b", "c");
 1. 【强制】在一个switch块内，每个case要么通过break/return等来终止，要么注释说明程序将继续执行到哪一个case为止；在一个switch块内，都必须包含一个default语句并且放在最后，即使空代码。 
 2. 【强制】在if/else/for/while/do语句中必须使用大括号。即使只有一行代码，避免采用单行的编码方式：
 <pre>if (condition) statements;</pre>
-3. 【强制】在高并发场景中，避免使用”等于”判断作为中断或退出的条件。 
-<br><span style="color:orange">说明</span>：如果并发控制没有处理好，容易产生等值判断被“击穿”的情况，使用大于或小于的区间判断条件来代替。  
-<br><span style="color:red">反例</span>：判断剩余奖品数量等于0时，终止发放奖品，但因为并发处理错误导致奖品数量瞬间变成了负数，这样的话，活动无法终止。 
+
 
 5. 【推荐】除常用方法（如getXxx/isXxx）等外，不要在条件判断中执行其它复杂的语句，将复杂逻辑判断的结果赋值给一个有意义的布尔变量名，以提高可读性。 
 <br><span style="color:orange">说明</span>：很多if语句内的逻辑相当复杂，阅读者需要分析条件表达式的最终结果，才能明确什么样的条件执行什么样的语句，那么，如果阅读者分析逻辑表达式错误呢？ <br><span style="color:green">正例</span>： 
