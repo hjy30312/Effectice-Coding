@@ -1,5 +1,10 @@
 # Effectice-Coding
-个人对阿里巴巴Java开发手册 有关初学者必学的总结
+个人对阿里巴巴Java开发手册 有关初学者必学的一些常用的规范的总结 不涉及并发、异常处理等 官方的很全面
+
+源自：
+- 中文版: *[阿里巴巴Java开发手册](https://github.com/alibaba/p3c/blob/master/%E9%98%BF%E9%87%8C%E5%B7%B4%E5%B7%B4Java%E5%BC%80%E5%8F%91%E6%89%8B%E5%86%8C%EF%BC%88%E8%AF%A6%E5%B0%BD%E7%89%88%EF%BC%89.pdf)*
+- [github地址](https://github.com/alibaba/p3c)
+- [IDE插件文档](https://github.com/alibaba/p3c/wiki)
 
 # 一、编程规约
 ## （一）命名风格
