@@ -11,10 +11,11 @@
 
 1. 【强制】代码中的命名均不能以<strong>下划线或美元符号</strong>开始，也不能以<strong>下划线或美元符号</strong>结束。
   <br><span style="color:red">反例</span>：`_name / __name / $name / name_ / name$ / name__`
-2. 【强制】代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。 
+2. <font color=#00ffff>【强制】代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。 
   <br><span style="color:orange">说明</span>：正确的英文拼写和语法可以让阅读者易于理解，避免歧义。注意，即使纯拼音命名方式也要避免采用。 
   <br><span style="color:green">正例</span>：alibaba / taobao / youku / hangzhou 等国际通用的名称，可视同英文。 
   <br><span style="color:red">反例</span>：DaZhePromotion [打折] / getPingfenByName() [评分] / int 某变量 = 3 
+  </font>
 3. 【强制】类名使用`UpperCamelCase`风格，但以下情形例外：DO / BO / DTO / VO / AO / PO等。 
  <br><span style="color:green">正例</span>：MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion 
  <br><span style="color:red">反例</span>：macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion 
